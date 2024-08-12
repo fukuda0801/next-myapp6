@@ -11,8 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 // SSGの場合
 
 export async function getStaticProps() {
-  const allPostsData = getPostsData(); // id title date, thumbnail
-  console.log(allPostsData);
+  const allPostsData = await getPostsData(); // id title date, thumbnail
 
   return {
     props: {
