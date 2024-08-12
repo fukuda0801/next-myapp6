@@ -1,6 +1,6 @@
 --- 
-title: "劇場版ハム太郎1"
-date: "2020--2-23"
+title: "劇場版ハム太郎 ハム太郎空を飛ぶ"
+date: "2020-02-23"
 thumbnail: "/images/thumbnail01.jpg"
 ---
 

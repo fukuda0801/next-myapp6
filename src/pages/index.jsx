@@ -21,6 +21,16 @@ export async function getStaticProps() {
   };
 }
 
+// SSRの場合
+// export async function getServerSideProps(context) {
+//   return {
+//     props: {
+//       // コンポーネントに渡すためのprops
+
+//     },
+//   }
+// }
+
 export default function Home({ allPostsData }) {
   return (
     <>
@@ -32,72 +42,26 @@ export default function Home({ allPostsData }) {
         </section>
 
         <section className={`${utilStyle.headingMd} ${utilStyle.padding1px}`}>
-          <h2>📝エンジニアのブログ</h2>
+          <h2>🐹ハムスターのブログ</h2>
           <div className={styles.grid}>
-            <article>
-              <Link href="/">
-                <Image
-                  src="/images/thumbnail01.jpg"
-                  alt="画像"
-                  className={styles.thumbnailImage}
-                  width={100}
-                  height={100}
-                />
-              </Link>
-              <Link href="/" className={utilStyle.boldText}>
-                ハム太郎の歴史
-              </Link>
-              <br />
-              <small className={utilStyle.lightText}>February 23, 2020</small>
-            </article>
-            <article>
-              <Link href="/">
-                <Image
-                  src="/images/thumbnail01.jpg"
-                  alt="画像"
-                  className={styles.thumbnailImage}
-                  width={100}
-                  height={100}
-                />
-              </Link>
-              <Link href="/" className={utilStyle.boldText}>
-                ハム太郎の歴史
-              </Link>
-              <br />
-              <small className={utilStyle.lightText}>February 23, 2020</small>
-            </article>
-            <article>
-              <Link href="/">
-                <Image
-                  src="/images/thumbnail01.jpg"
-                  alt="画像"
-                  className={styles.thumbnailImage}
-                  width={100}
-                  height={100}
-                />
-              </Link>
-              <Link href="/" className={utilStyle.boldText}>
-                ハム太郎の歴史
-              </Link>
-              <br />
-              <small className={utilStyle.lightText}>February 23, 2020</small>
-            </article>
-            <article>
-              <Link href="/">
-                <Image
-                  src="/images/thumbnail01.jpg"
-                  alt="画像"
-                  className={styles.thumbnailImage}
-                  width={100}
-                  height={100}
-                />
-              </Link>
-              <Link href="/" className={utilStyle.boldText}>
-                ハム太郎の歴史
-              </Link>
-              <br />
-              <small className={utilStyle.lightText}>February 23, 2020</small>
-            </article>
+            {allPostsData.map((post) => (
+              <article key={post.id}>
+                <Link href={`/posts/${post.id}`}>
+                  <Image
+                    src={`${post.thumbnail}`}
+                    alt="画像"
+                    className={styles.thumbnailImage}
+                    width={100}
+                    height={100}
+                  />
+                </Link>
+                <Link href="/" className={utilStyle.boldText}>
+                  {post.title}
+                </Link>
+                <br />
+                <small className={utilStyle.lightText}>{post.date}</small>
+              </article>
+            ))}
           </div>
         </section>
       </Layout>
